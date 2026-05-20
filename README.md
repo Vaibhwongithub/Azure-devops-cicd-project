@@ -79,31 +79,39 @@ kubectl apply -f kubernetes/
 
 ```
 Azure DevOps Setup
-Create Service Connections
+
+Create Service Connections-
 Azure Resource Manager Connection
-Azure DevOps
-Project Settings
-Service Connections
-New Service Connection
-Azure Resource Manager
-Automatic Authentication
-Docker Registry Connection
-Azure DevOps
-Service Connections
-Docker Registry
-Azure Container Registry
-Select Subscription
+1.Azure DevOps
+2.Project Settings
+3.Service Connections
+4.New Service Connection
+5.Azure Resource Manager
+6.Automatic Authentication
+
+Docker Registry Connection-
+
+1.Azure DevOps
+2.Service Connections
+3.Docker Registry
+4.Azure Container Registry
+
+Select Subscription-
+
 AKS Connection Setup
+```
 az aks get-credentials \
   --resource-group devops-rg \
   --name devops-aks
+```
 Verification Commands
-Check Pods
+
+Check Pods-
 kubectl get pods -n devops-demo
-Check Services
+Check Services-
 kubectl get svc -n devops-demo
-Check Nodes
+Check Nodes-
 kubectl get nodes
-Sample Output
+
 
 
