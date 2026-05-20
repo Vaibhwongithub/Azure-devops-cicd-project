@@ -1,20 +1,22 @@
-# Azure DevOps CI/CD Pipeline Project-This project automates the entire software delivery lifecycle. When developers push code to GitHub, Azure DevOps pipelines automatically trigger the build process. The application is containerized using Docker, stored in Azure Container Registry, and deployed to AKS. Terraform provisions and manages the infrastructure. This ensures faster, reliable, and scalable deployments.
+# Azure DevOps CI/CD Pipeline Project
 
-## Technologies
+## Overview
+
+This project demonstrates a complete CI/CD pipeline implementation using:
+
 - Azure DevOps
 - Docker
 - Kubernetes
 - Terraform
 - GitHub
+- Azure Kubernetes Service (AKS)
+- Azure Container Registry (ACR)
 
-## Features
-- CI/CD Pipeline
-- Docker Containerization
-- Kubernetes Deployment
-- Infrastructure as Code
+---
 
-Project Architecture-->
+# Project Architecture
 
+```text
 Developer Pushes Code -> GitHub Repository
                                 |
                                 v
@@ -30,9 +32,80 @@ Developer Pushes Code -> GitHub Repository
                         Push to ACR            |
                                |               v
                                --------> Kubernetes Deploy
+```
 
+---
 
-## Prerequisites
+# Folder Structure
+
+```text
+azure-devops-cicd-project/
+│
+├── app/
+│   ├── index.js
+│   ├── package.json
+│   └── Dockerfile
+│
+├── kubernetes/
+│   ├── deployment.yaml
+│   ├── service.yaml
+│   └── namespace.yaml
+│
+├── terraform/
+│   ├── main.tf
+│   ├── provider.tf
+│   ├── variables.tf
+│   └── outputs.tf
+│
+├── scripts/
+│   ├── build.sh
+│   └── deploy.sh
+│
+├── azure-pipelines.yml
+├── README.md
+└── .gitignore
+```
+
+---
+
+# Technologies Used
+
+| Tool | Purpose |
+|------|----------|
+| Azure DevOps | CI/CD Pipeline |
+| Docker | Containerization |
+| Kubernetes | Container Orchestration |
+| Terraform | Infrastructure as Code |
+| GitHub | Version Control |
+| AKS | Managed Kubernetes |
+| ACR | Docker Image Registry |
+
+---
+
+# Features
+
+- Automated CI/CD pipeline
+- Docker containerization
+- Kubernetes deployment
+- Infrastructure provisioning using Terraform
+- GitHub integration
+- Automated deployments using Azure DevOps
+
+---
+
+# CI/CD Workflow
+
+1. Developer pushes code to GitHub
+2. Azure DevOps pipeline gets triggered
+3. Application is built automatically
+4. Docker image is created
+5. Image is pushed to Azure Container Registry
+6. Terraform provisions infrastructure
+7. Kubernetes deployment gets updated
+
+---
+
+# Prerequisites
 
 - Azure Subscription
 - Azure DevOps Account
@@ -43,75 +116,104 @@ Developer Pushes Code -> GitHub Repository
 
 ---
 
-CI/CD Workflow---->
-Developer pushes code to GitHub
-Azure DevOps triggers pipeline
-Docker image gets built
-Image pushed to Azure Container Registry
-Terraform provisions infrastructure
-Kubernetes deployment updated automatically
+# Setup Instructions
 
-
-
-## Setup Instructions
-
-### Clone Repository
+## Clone Repository
 
 ```bash
-git clone https://github.com/yourusername/Azure-devops-cicd-project.git
-cd Azure-devops-cicd-project
+git clone https://github.com/YOUR_USERNAME/azure-devops-cicd-project.git
 
-Terraform Deployment-
+cd azure-devops-cicd-project
+```
+
+---
+
+## Terraform Deployment
+
+```bash
 cd terraform
+
 terraform init
+
 terraform apply -auto-approve
+```
 
-Build Docker Image-
+---
+
+## Docker Build
+
+```bash
 cd app
+
 docker build -t nodejs-app .
+```
 
-Push Image to ACR-
-docker tag nodejs-app YOUR_ACR_NAME.azurecr.io/nodejs-app:latest
-docker push YOUR_ACR_NAME.azurecr.io/nodejs-app:latest
+---
 
-Kubernetes Deployment-
+## Kubernetes Deployment
+
+```bash
 kubectl apply -f kubernetes/
-
 ```
-Azure DevOps Setup
 
-Create Service Connections-
-Azure Resource Manager Connection
-1.Azure DevOps
-2.Project Settings
-3.Service Connections
-4.New Service Connection
-5.Azure Resource Manager
-6.Automatic Authentication
+---
 
-Docker Registry Connection-
+# Azure DevOps Pipeline
 
-1.Azure DevOps
-2.Service Connections
-3.Docker Registry
-4.Azure Container Registry
+The pipeline performs:
 
-Select Subscription-
+- Build
+- Test
+- Docker Image Creation
+- Push to ACR
+- Terraform Apply
+- Kubernetes Deployment
 
-AKS Connection Setup
-```
-az aks get-credentials \
-  --resource-group devops-rg \
-  --name devops-aks
-```
-Verification Commands
+---
 
-Check Pods-
+# Verification Commands
+
+## Check Pods
+
+```bash
 kubectl get pods -n devops-demo
-Check Services-
+```
+
+## Check Services
+
+```bash
 kubectl get svc -n devops-demo
-Check Nodes-
+```
+
+## Check Nodes
+
+```bash
 kubectl get nodes
+```
+
+---
+
+# Sample Output
+
+```text
+Azure DevOps CI/CD Pipeline Working Successfully
+```
+
+---
+
+# Future Enhancements
+
+- Helm Charts
+- Prometheus Monitoring
+- Grafana Dashboards
+- ArgoCD GitOps
+- SonarQube Integration
+- Trivy Security Scanning
+
+---
 
 
 
+
+git push -u origin main
+```
