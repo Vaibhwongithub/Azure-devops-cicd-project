@@ -77,6 +77,33 @@ docker push YOUR_ACR_NAME.azurecr.io/nodejs-app:latest
 Kubernetes Deployment-
 kubectl apply -f kubernetes/
 
-
+```
+Azure DevOps Setup
+Create Service Connections
+Azure Resource Manager Connection
+Azure DevOps
+Project Settings
+Service Connections
+New Service Connection
+Azure Resource Manager
+Automatic Authentication
+Docker Registry Connection
+Azure DevOps
+Service Connections
+Docker Registry
+Azure Container Registry
+Select Subscription
+AKS Connection Setup
+az aks get-credentials \
+  --resource-group devops-rg \
+  --name devops-aks
+Verification Commands
+Check Pods
+kubectl get pods -n devops-demo
+Check Services
+kubectl get svc -n devops-demo
+Check Nodes
+kubectl get nodes
+Sample Output
 
 
